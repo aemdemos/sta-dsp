@@ -1,0 +1,80 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "instances": [
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-00-a99d7d173ee51a2ab8f6d0c5da0d3ae472386c80",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "instances": [
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-05-369b023818fcd7fd0e61768c127fb264507e7c08",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/div[3]"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Hero",
+      "cluster": 1,
+      "instances": [
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-01-f338be88bb34cf07f1dfcfe923ab969b5f736bb9",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/section[1]/div[1]"
+        },
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-03-7dc5902894f081161f6cab8c5a80181b93138f90",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/section[1]/div[3]"
+        }
+      ]
+    },
+    {
+      "name": "Table (no header)",
+      "cluster": 2,
+      "instances": [
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-00-a99d7d173ee51a2ab8f6d0c5da0d3ae472386c80",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/div[1]"
+        },
+        {
+          "url": "https://www.durystasavingsprogram.com/",
+          "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+          "uuid": "a3b03812-05-369b023818fcd7fd0e61768c127fb264507e7c08",
+          "xpath": "/html[1]/body[1]/div[1]/div[3]/div[3]"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://www.durystasavingsprogram.com/",
+      "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+      "uuid": "a3b03812-02-6d784dd72ecdb34471a691126e8f4a676bc84c22",
+      "xpath": "/html[1]/body[1]/div[1]/div[3]/section[1]/div[2]"
+    },
+    {
+      "url": "https://www.durystasavingsprogram.com/",
+      "urlHash": "a3b03812ce218fc051dad88d67b09ef32dc8152e",
+      "uuid": "a3b03812-04-4f99fc34378a72bfe8a73460c1741d53bcc0ab9e",
+      "xpath": "/html[1]/body[1]/div[1]/div[3]/div[2]"
+    }
+  ]
+}
