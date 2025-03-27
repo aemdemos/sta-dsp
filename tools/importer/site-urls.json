@@ -1,0 +1,14 @@
+
+{
+    "originUrl": "https://www.durystasavingsprogram.com,
+    "urls": [
+      {
+        "url": "https://www.example.com/pages/page2.html",
+        "source": "SITEMAPS"
+      },
+      {
+        "url": "https://www.example.com/pages/page4.html",
+        "source": "CRAWL"
+      } 
+    ]
+  }
