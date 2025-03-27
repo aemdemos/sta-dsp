@@ -1,9 +1,20 @@
 {
-    "originUrl": "https://www.durystasavingsprogram.com",
-    "urls": [
-      {
-        "url": "https://www.durystasavingsprogram.com",
-        "source": "SITEMAPS"
-      }
-    ]
-  }
+  "originUrl": "https://www.durystasavingsprogram.com/",
+  "urls": [
+    {
+      "url": "https://www.durystasavingsprogram.com/",
+      "source": "CRAWL"
+    }
+  ],
+  "crawlOptions": {
+    "timeout": 64800000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": -1,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "crawl",
+    "logger": {}
+  },
+  "extractionErrors": []
+}
