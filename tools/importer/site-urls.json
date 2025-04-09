@@ -1,0 +1,21 @@
+{
+  "originUrl": "https://www.entegris.com",
+  "lastCrawled": "https://www.entegris.com/ja/about-us/events",
+  "urls": [],
+  "crawlOptions": {
+    "timeout": 64800000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": -1,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "SITEMAPS",
+    "logger": {}
+  },
+  "extractionErrors": [
+    {
+      "url": "https://www.entegris.com/ja/about-us/events",
+      "status": "parseSitemapFromUrl (https://www.entegris.com/ja/about-us/events): Failed to fetch or parse the sitemap. Failed to fetch the sitemap. Status: 404"
+    }
+  ]
+}
