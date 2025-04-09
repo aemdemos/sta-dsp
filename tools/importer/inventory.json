@@ -1,0 +1,260 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "instances": [
+        {
+          "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+          "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+          "uuid": "75a5c2fa-00-6e70765a003047818ea5700b557b8d01b43078df",
+          "xpath": "/html[1]/body[1]/div[1]"
+        },
+        {
+          "url": "https://info.entegris.com/tails-of-distributions",
+          "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+          "uuid": "9394a3d8-00-0f42d7700d68d4e582a02ec271e92da66a38fae3",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]"
+        },
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "instances": [
+        {
+          "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+          "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+          "uuid": "75a5c2fa-03-1cd5e60707bc11e5ffed495174408904fc84dcf4",
+          "xpath": "/html[1]/body[1]/div[1]/div[1]/footer[1]"
+        },
+        {
+          "url": "https://info.entegris.com/tails-of-distributions",
+          "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+          "uuid": "9394a3d8-03-88ac76e2ad1ca51e6f4c9dad9f6f00153654e760",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]"
+        },
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-12-45abbfc58f79d4cb6b0c727f987819a4e8f3d222",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/footer[1]"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Video",
+      "cluster": 1,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-02-cee49e61030aa4c74eebe0fb74b9b03626effc1b",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[2]"
+        },
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-03-724d6eee6d80bdd3fb13ae4d89f9fb147063d4be",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[3]"
+        },
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-09-d596bb005b253d1515a205f1f66e5d27b2f80af5",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[8]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 2,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-07-14f0ff037c08f4e1fdd8745a8496dd10f45f8506",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[6]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 3,
+      "instances": [
+        {
+          "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+          "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+          "uuid": "75a5c2fa-03-1cd5e60707bc11e5ffed495174408904fc84dcf4",
+          "xpath": "/html[1]/body[1]/div[1]/div[1]/footer[1]"
+        },
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-12-45abbfc58f79d4cb6b0c727f987819a4e8f3d222",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/footer[1]"
+        }
+      ]
+    },
+    {
+      "name": "Table (no header)",
+      "cluster": 4,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-05-170de9d448f8b19128755eb21d2bf6ef302e1123",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[5]/section[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns (three columns)",
+      "cluster": 5,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-06-1f2a1dee9140ce5be79b1eec3608c259f2c78254",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[5]/section[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 6,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-10-28e1d86957c59673de2f770d04373799eda8db36",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[9]"
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "cluster": 7,
+      "instances": [
+        {
+          "url": "https://info.entegris.com/tails-of-distributions",
+          "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+          "uuid": "9394a3d8-03-88ac76e2ad1ca51e6f4c9dad9f6f00153654e760",
+          "xpath": "/html[1]/body[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 8,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-00-6419c5482dba87d55497e10067ddb965e78fe885",
+          "xpath": "/html[1]/body[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "Accordion",
+      "cluster": 9,
+      "instances": [
+        {
+          "url": "https://www.entegris.com/careers",
+          "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+          "uuid": "f4aafa88-01-1ce4135e7d0cdfb165e94f29083e324fed973129",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 10,
+      "instances": [
+        {
+          "url": "https://info.entegris.com/tails-of-distributions",
+          "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+          "uuid": "9394a3d8-01-74baca0e8f437780d98bd362ee1e75dcaf7efdb7",
+          "xpath": "/html[1]/body[1]/div[2]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "unknown",
+      "cluster": 11,
+      "instances": [
+        {
+          "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+          "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+          "uuid": "75a5c2fa-01-10cf23c9dfb6d2ec5272ff971c8e7b21f8c5ecdb",
+          "xpath": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[3]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 12,
+      "instances": [
+        {
+          "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+          "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+          "uuid": "75a5c2fa-00-6e70765a003047818ea5700b557b8d01b43078df",
+          "xpath": "/html[1]/body[1]/div[1]"
+        }
+      ]
+    },
+    {
+      "name": "Carousel",
+      "cluster": 13,
+      "instances": [
+        {
+          "url": "https://info.entegris.com/tails-of-distributions",
+          "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+          "uuid": "9394a3d8-00-0f42d7700d68d4e582a02ec271e92da66a38fae3",
+          "xpath": "/html[1]/body[1]/div[2]/div[1]"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://poco.entegris.com/en/home/products/premium-graphite/industrial-grades.html",
+      "urlHash": "75a5c2fa8ffb663bb5ab47d14aa267462b10c41c",
+      "uuid": "75a5c2fa-02-c4c51e37d3ec84e69d5010d7533bf894e2c2028f",
+      "xpath": "/html[1]/body[1]/div[1]/div[1]/section[1]/div[4]"
+    },
+    {
+      "url": "https://info.entegris.com/tails-of-distributions",
+      "urlHash": "9394a3d8b550c4aa897dc4d9d8258e54838e190f",
+      "uuid": "9394a3d8-02-78f29914a84eaddd03f8aed4b135c094a5da62d3",
+      "xpath": "/html[1]/body[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.entegris.com/careers",
+      "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+      "uuid": "f4aafa88-04-7f1f7eb17098e16c60251b3126f6b8237f9e8af0",
+      "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[4]"
+    },
+    {
+      "url": "https://www.entegris.com/careers",
+      "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+      "uuid": "f4aafa88-08-3e682c145b10e5efc6aa3c8ca247f4aebda5842e",
+      "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[7]"
+    },
+    {
+      "url": "https://www.entegris.com/careers",
+      "urlHash": "f4aafa8837c66ea0da6e4db05aacf08257065c58",
+      "uuid": "f4aafa88-11-8768cbabc4faf0df462e4539ef7a14c1e98fba50",
+      "xpath": "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[10]"
+    }
+  ]
+}
