@@ -21,7 +21,7 @@
   background-color: white; /* White card background */
   border: none; /* Remove border */
   border-radius: 15px; /* Rounded corners for cards */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for elevation */
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%); /* Subtle shadow for elevation */
   width: 320px; /* Slightly increase card width for balance */
   display: flex; /* Use flexbox for card content layout */
   flex-direction: column; /* Stack card content vertically */
@@ -33,7 +33,7 @@
   width: 80px; /* Fixed width for circular image */
   background-color: #fdfdfd; /* Lighten placeholder color */
   border-radius: 50%; /* Make it circular */
-  margin: 0 auto 36px auto; /* Center image horizontally and add spacing below */
+  margin: 0 auto 36px; /* Center image horizontally and add spacing below */
   display: flex; /* Use flexbox for alignment */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
@@ -41,20 +41,19 @@
 
 .cards-wrapper > .cards.block > ul > li .cards-card-body:last-of-type {
   display: flex; /* Use flexbox for alignment */
-  flex-direction: row; /* Align elements side by side */
-  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  flex-flow: row wrap; /* Align elements side by side */ /* Allow wrapping for responsiveness */
   gap: 16px; /* Add spacing between elements */
 }
 
 .cards-wrapper > .cards.block > ul > li .cards-card-body p strong {
-  color: #ff6600; /* Orange color for titles */
+  color: #f60; /* Orange color for titles */
   font-size: 22px; /* Slightly increase font size for titles */
   line-height: 1.4; /* Improve readability */
   margin-bottom: 20px; /* Add spacing below title */
 }
 
 .cards-wrapper > .cards.block > ul > li .cards-card-body p {
-  color: #666666; /* Gray color for body text */
+  color: #666; /* Gray color for body text */
   font-size: 16px; /* Adjust font size for body text */
   line-height: 1.6; /* Improve readability */
   margin-bottom: 28px; /* Add spacing below body text */
