@@ -1,0 +1,45 @@
+{
+  "originUrl": "https://biomarkerboost.com",
+  "lastCrawled": "https://biomarkerboost.com/",
+  "urls": [
+    {
+      "url": "https://biomarkerboost.com/",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/404",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/500",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/how-testing-works",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/thank-you",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/what-are-biomarkers",
+      "source": "SITEMAPS"
+    },
+    {
+      "url": "https://biomarkerboost.com/why-biomarkers-matter",
+      "source": "SITEMAPS"
+    }
+  ],
+  "crawlOptions": {
+    "timeout": 64800000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": -1,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "SITEMAPS",
+    "logger": {}
+  },
+  "extractionErrors": []
+}
