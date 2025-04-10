@@ -1,27 +1,81 @@
-.cards > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  grid-gap: 24px;
+
+.cards-wrapper > .cards.block {
+  background-color: #fff5f0; /* Light peach background */
+  padding: 60px; /* Add padding around the block */
+  display: flex; /* Use flexbox for overall layout */
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  justify-content: center; /* Center cards horizontally */
+  gap: 24px; /* Space between cards */
 }
 
-.cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+.cards-wrapper > .cards.block > ul {
+  display: flex; /* Use flexbox for card alignment */
+  flex-direction: row; /* Align cards side by side */
+  gap: 24px; /* Space between cards */
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards-wrapper > .cards.block > ul > li {
+  background-color: white; /* White card background */
+  border: none; /* Remove border */
+  border-radius: 15px; /* Rounded corners for cards */
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%); /* Subtle shadow for elevation */
+  width: 320px; /* Slightly increase card width for balance */
+  display: flex; /* Use flexbox for card content layout */
+  flex-direction: column; /* Stack card content vertically */
+  padding: 20px; /* Add padding inside the card */
 }
 
-.cards .cards-card-image {
-  line-height: 0;
+.cards-wrapper > .cards.block > ul > li .cards-card-body:first-of-type {
+  height: 80px; /* Fixed height for circular image */
+  width: 80px; /* Fixed width for circular image */
+  background-color: #fdfdfd; /* Lighten placeholder color */
+  border-radius: 50%; /* Make it circular */
+  margin: 0 auto 36px; /* Center image horizontally and add spacing below */
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
 }
 
-.cards > ul > li img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.cards-wrapper > .cards.block > ul > li .cards-card-body:last-of-type {
+  display: flex; /* Use flexbox for alignment */
+  flex-flow: row wrap; /* Align elements side by side */ /* Allow wrapping for responsiveness */
+  gap: 16px; /* Add spacing between elements */
+}
+
+.cards-wrapper > .cards.block > ul > li .cards-card-body p strong {
+  color: #f60; /* Orange color for titles */
+  font-size: 22px; /* Slightly increase font size for titles */
+  line-height: 1.4; /* Improve readability */
+  margin-bottom: 20px; /* Add spacing below title */
+}
+
+.cards-wrapper > .cards.block > ul > li .cards-card-body p {
+  color: #666; /* Gray color for body text */
+  font-size: 16px; /* Adjust font size for body text */
+  line-height: 1.6; /* Improve readability */
+  margin-bottom: 28px; /* Add spacing below body text */
+}
+
+.cards-wrapper > .cards.block > ul > li .button-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center button horizontally */
+  margin-top: auto; /* Push button to the bottom of the card */
+  padding-top: 16px; /* Add spacing above the button */
+}
+
+.cards-wrapper > .cards.block > ul > li .button-container .button {
+  background-color: #005a8d; /* Dark blue background for button */
+  color: white; /* White text */
+  padding: 16px 32px; /* Increase padding inside the button */
+  border-radius: 20px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold text */
+  font-size: 15px; /* Slightly increase font size */
+}
+
+.cards-wrapper > .cards.block > ul > li .button-container .button:hover {
+  background-color: #004770; /* Slightly darker blue on hover */
 }
