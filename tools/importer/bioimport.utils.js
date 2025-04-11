@@ -120,7 +120,9 @@ export function preTransformRules({
   originalURL,
 }) {
   // adjust image urls
-  WebImporter.rules.adjustImageUrls(root, url, originalURL);
+  // Charity commenting out due to probable bug in the helix importer
+  //log.js:23 [importer-ui] Unable to adjust image URL http://localhost:3001/images/biogmarker-boost-logo.webp - removing image
+//  WebImporter.rules.adjustImageUrls(root, url, originalURL);
 
   [...document.querySelectorAll('a')].forEach((a) => {
     const href = a.getAttribute('href');
@@ -128,6 +130,8 @@ export function preTransformRules({
       try {
         if (href.startsWith('./') || href.startsWith('/') || href.startsWith('../')) {
           // transform relative URLs to absolute URLs
+         // it is trying to construct a new URL(url) - for a url that can be relative (without a leading ./). 
+          // That will throw and then it removes the image
           const targetUrl = new URL(href, publishUrl);
           // eslint-disable-next-line no-param-reassign
           a.href = targetUrl.toString();
