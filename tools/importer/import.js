@@ -163,10 +163,8 @@ function transformFragment(main, { fragment, inventory, ...source }) {
 
         if (!fragmentBlock) return;
         const { name, cluster } = fragmentBlock;
-      //  const parserFn = parsers[`${name} ${cluster}`];
-        // replacing with below b/c the parser name in the fragments wasn't adjusted
-        const parserFn = parsers[WebImporter.Import.getParserName({ name, cluster })];
-        
+        const parserName = WebImporter.Import.getParserName({ name, cluster });
+        const parserFn = parsers[parserName];
         if (!parserFn) return;
 
         try {

@@ -104,6 +104,45 @@ export async function handleOnLoad({ document }) {
   document.body.setAttribute('data-hlx-imp-body-width', bodyWidth);
 }
 
+function adjustImageUrls(main, url, current) {
+  [...main.querySelectorAll('img')].forEach((img) => {
+    let src = img.getAttribute('src');
+    if (src) {
+      try {
+        /* eslint-disable no-new */
+        new URL(src);
+      } catch (e) {
+        src = `./${src}`;
+      }
+
+      try {
+        if (src.startsWith('./') || src.startsWith('/') || src.startsWith('../')) {
+          // transform relative URLs to absolute URLs
+          const targetUrl = new URL(src, url);
+          // eslint-disable-next-line no-param-reassign
+          img.src = targetUrl.toString();
+        } else if (current) {
+          // also transform absolute URLs to current host
+          const currentSrc = new URL(src);
+          const currentUrl = new URL(current);
+          if (currentSrc.host === currentUrl.host) {
+            // if current host is same than src host, switch src host with url host
+            // this is the case for absolutes URLs pointing to the same host
+            const targetUrl = new URL(url);
+            const newSrc = new URL(`${currentSrc.pathname}${currentSrc.search}${currentSrc.hash}`, `${targetUrl.protocol}//${targetUrl.host}`);
+            // eslint-disable-next-line no-param-reassign
+            img.src = newSrc.toString();
+          }
+        }
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(`Unable to adjust image URL ${img.src} - removing image`);
+        img.remove();
+      }
+    }
+  });
+}
+
 /**
  * Pre transform rules
  * @param {Element} root
@@ -120,17 +159,21 @@ export function preTransformRules({
   originalURL,
 }) {
   // adjust image urls
-
-  WebImporter.rules.adjustImageUrls(root, url, originalURL);
+  adjustImageUrls(root, url, originalURL);
 
   [...document.querySelectorAll('a')].forEach((a) => {
-    const href = a.getAttribute('href');
+    let href = a.getAttribute('href');
     if (href) {
+      try {
+        /* eslint-disable no-new */
+        new URL(href);
+      } catch (e) {
+        href = `./${href}`;
+      }
+
       try {
         if (href.startsWith('./') || href.startsWith('/') || href.startsWith('../')) {
           // transform relative URLs to absolute URLs
-         // it is trying to construct a new URL(url) - for a url that can be relative (without a leading ./). 
-          // That will throw and then it removes the image
           const targetUrl = new URL(href, publishUrl);
           // eslint-disable-next-line no-param-reassign
           a.href = targetUrl.toString();
