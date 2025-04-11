@@ -1,49 +1,43 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract the cards container
-  const cards = Array.from(element.querySelectorAll('.col')); 
+  const headerRow = ['Cards'];
 
-  // Prepare the table rows
-  const rows = [
-    ['Cards'], // Header row matching the example exactly
-  ];
+  const rows = [...element.querySelectorAll('.col')].map((col) => {
+    const image = col.querySelector('img');
+    if (!image) return ['Missing Image'];
 
-  cards.forEach((card) => {
-    const img = card.querySelector('.card-thumb__img');
-    const title = card.querySelector('h2');
-    const description = card.querySelector('p');
-    const link = card.querySelector('a');
+    const imgEl = document.createElement('img');
+    imgEl.src = image.src;
+    imgEl.alt = image.alt || 'Image';
 
-    // Image element
-    const imageElement = document.createElement('img');
-    imageElement.src = img ? img.src : '';
-    imageElement.alt = img ? img.alt : '';
+    const title = col.querySelector('h2');
+    const titleEl = document.createElement('strong');
+    titleEl.textContent = title ? title.textContent : 'Missing Title';
 
-    // Text content
-    const textContent = [];
-    if (title) {
-      const titleElement = document.createElement('strong');
-      titleElement.textContent = title.textContent;
-      textContent.push(titleElement);
-    }
-    if (description) {
-      const descriptionElement = document.createElement('p');
-      descriptionElement.textContent = description.textContent;
-      textContent.push(descriptionElement);
-    }
+    const description = col.querySelector('p');
+    const descriptionEl = document.createElement('p');
+    descriptionEl.textContent = description ? description.textContent : 'Missing Description';
+
+    const link = col.querySelector('a');
+    const linkEl = document.createElement('a');
     if (link) {
-      const linkElement = document.createElement('a');
-      linkElement.href = link.href;
-      linkElement.textContent = link.textContent;
-      textContent.push(linkElement);
+      linkEl.href = link.href;
+      linkEl.textContent = link.textContent;
+    } else {
+      linkEl.textContent = 'Missing Link';
     }
 
-    rows.push([imageElement, textContent]);
+    const textContent = document.createElement('div');
+    textContent.appendChild(titleEl);
+    textContent.appendChild(descriptionEl);
+    textContent.appendChild(linkEl);
+
+    return [imgEl, textContent];
   });
 
-  // Create the table
-  const table = WebImporter.DOMUtils.createTable(rows, document);
+  const tableData = [headerRow, ...rows];
 
-  // Replace the element
-  element.replaceWith(table);
+  const blockTable = WebImporter.DOMUtils.createTable(tableData, document);
+
+  element.replaceWith(blockTable);
 }
