@@ -120,9 +120,8 @@ export function preTransformRules({
   originalURL,
 }) {
   // adjust image urls
-  // Charity commenting out due to probable bug in the helix importer
-  //log.js:23 [importer-ui] Unable to adjust image URL http://localhost:3001/images/biogmarker-boost-logo.webp - removing image
-//  WebImporter.rules.adjustImageUrls(root, url, originalURL);
+
+  WebImporter.rules.adjustImageUrls(root, url, originalURL);
 
   [...document.querySelectorAll('a')].forEach((a) => {
     const href = a.getAttribute('href');
