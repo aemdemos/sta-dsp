@@ -1,49 +1,37 @@
-
-.hero-wrapper {
-  display: flex; /* Create a flex container for side-by-side layout */
-  flex-direction: row; /* Ensure elements are side by side */
-  align-items: center; /* Center elements vertically */
-  justify-content: space-between; /* Space out text and image evenly */
-  background: linear-gradient(to bottom, #036, #69c); /* Gradient background */
-  padding: 40px; /* Add spacing around the block */
-  min-height: 700px; /* Ensure consistent height */
+.hero-container .hero-wrapper {
+  max-width: unset;
+  padding: 0;
 }
 
-.hero-wrapper > .hero {
-  display: flex; /* Ensure the hero content is side by side */
-  flex-direction: row; /* Horizontal layout for text and image */
-  align-items: center; /* Center text and image vertically */
-  justify-content: space-between; /* Space out text and image */
-  width: 100%; /* Make the hero span the full width */
+.hero {
+  position: relative;
+  padding: 40px 24px;
+  min-height: 300px;
 }
 
-.hero-wrapper > .hero > div:first-child {
-  flex: 1; /* Ensure text column occupies equal space with image */
-  padding-right: 80px; /* Add more spacing between text and image */
-  color: #fff; /* White text for contrast */
+.hero h1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--background-color);
 }
 
-.hero-wrapper > .hero > div:first-child h1,
-.hero-wrapper > .hero > div:first-child h3,
-.hero-wrapper > .hero > div:first-child h4 {
-  margin-bottom: 24px; /* Add more spacing between headings */
+.hero picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
-.hero-wrapper > .hero > div:last-child {
-  flex: 1.6; /* Increase image column width for better balance */
-  display: flex; /* Ensure the image fills its column */
-  align-items: center; /* Center the image vertically */
-  justify-content: center; /* Center the image horizontally */
-  order: 2; /* Ensure the image is positioned on the right */
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-.hero-wrapper > .hero > div:last-child picture {
-  width: 100%; /* Ensure the picture fills the column */
-  height: auto; /* Maintain aspect ratio */
-}
-
-.hero-wrapper > .hero > div:last-child img {
-  object-fit: cover; /* Prevent distortion */
-  width: 100%; /* Scale image proportionally */
-  height: auto; /* Maintain aspect ratio */
+@media (width >= 900px) {
+  .hero {
+    padding: 40px 32px;
+  }
 }
