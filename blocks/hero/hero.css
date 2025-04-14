@@ -1,38 +1,40 @@
 
-.hero-wrapper > .hero {
+.hero-wrapper {
   display: flex; /* Create a flex container for side-by-side layout */
   flex-direction: row; /* Ensure elements are side by side */
-  align-items: stretch; /* Stretch elements to fill the container */
-  justify-content: space-between; /* Space out columns evenly */
-  padding: 0; /* Remove extra padding */
-  min-height: 300px; /* Maintain consistent height */
+  align-items: center; /* Center elements vertically */
+  justify-content: space-between; /* Space out text and image evenly */
+  background: linear-gradient(to bottom, #036, #69c); /* Gradient background */
+  padding: 40px; /* Add spacing around the block */
+  min-height: 700px; /* Ensure consistent height */
+}
+
+.hero-wrapper > .hero {
+  display: flex; /* Ensure the hero content is side by side */
+  flex-direction: row; /* Horizontal layout for text and image */
+  align-items: center; /* Center text and image vertically */
+  justify-content: space-between; /* Space out text and image */
+  width: 100%; /* Make the hero span the full width */
 }
 
 .hero-wrapper > .hero > div:first-child {
-  flex: 2; /* Make the left column wider */
-  background-color: #007a3c; /* Apply green background */
-  padding: 40px; /* Add padding for spacing */
-  display: flex; /* Create a flex container */
-  flex-direction: column; /* Stack text vertically */
-  justify-content: flex-start; /* Align text to the top */
-  align-items: flex-start; /* Align text content to the left */
-  color: #fff; /* Ensure white text for contrast */
+  flex: 1; /* Ensure text column occupies equal space with image */
+  padding-right: 80px; /* Add more spacing between text and image */
+  color: #fff; /* White text for contrast */
 }
 
 .hero-wrapper > .hero > div:first-child h1,
-.hero-wrapper > .hero > div:first-child h2 {
-  margin: 0; /* Remove margins */
-  margin-bottom: 16px; /* Add consistent spacing between text elements */
-  color: #fff; /* Ensure text remains white */
-  line-height: 1.4; /* Adjust line height for tighter spacing */
+.hero-wrapper > .hero > div:first-child h3,
+.hero-wrapper > .hero > div:first-child h4 {
+  margin-bottom: 24px; /* Add more spacing between headings */
 }
 
 .hero-wrapper > .hero > div:last-child {
-  flex: 1; /* Make the right column narrower */
+  flex: 1.6; /* Increase image column width for better balance */
   display: flex; /* Ensure the image fills its column */
   align-items: center; /* Center the image vertically */
   justify-content: center; /* Center the image horizontally */
-  padding: 0; /* Remove padding */
+  order: 2; /* Ensure the image is positioned on the right */
 }
 
 .hero-wrapper > .hero > div:last-child picture {
@@ -41,12 +43,7 @@
 }
 
 .hero-wrapper > .hero > div:last-child img {
-  object-fit: cover; /* Prevent image distortion */
-  width: 100%; /* Fill the width of the column */
+  object-fit: cover; /* Prevent distortion */
+  width: 100%; /* Scale image proportionally */
   height: auto; /* Maintain aspect ratio */
-}
-
-.hero-container > .hero-wrapper {
-  max-width: unset; /* Allow hero to span the entire width */
-  padding: 0; /* Remove spacing around the block */
 }
