@@ -12,7 +12,7 @@
 .cards-wrapper > .cards.block > ul > li {
   background-color: var(--background-color); /* Set card background to white */
   border-radius: 10px; /* Add rounded corners */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for elevation */
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%); /* Add subtle shadow for elevation */
   overflow: hidden; /* Prevent content overflow */
   padding: 30px 20px; /* Increase internal padding to make cards taller */
   flex: 1; /* Ensure equal card width */
@@ -43,7 +43,7 @@
 
 .cards-wrapper > .cards.block > ul > li .cards-card-body h3 {
   font-size: 18px; /* Adjust font size for title */
-  color: #ff6600; /* Use orange color for title text */
+  color: #f60; /* Use orange color for title text */
   margin-bottom: 15px; /* Add more spacing below the title */
   font-weight: 600; /* Semi-bold font for better readability */
 }
@@ -61,7 +61,7 @@
   font-weight: 400; /* Increase font weight for better readability */
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .cards-wrapper > .cards.block > ul {
     flex-direction: column; /* Stack cards vertically on smaller screens */
     gap: 20px; /* Adjust spacing between stacked cards */
