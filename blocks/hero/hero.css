@@ -4,7 +4,7 @@
   flex-direction: row; /* Ensure elements are side by side */
   align-items: center; /* Center elements vertically */
   justify-content: space-between; /* Space out text and image evenly */
-  background: linear-gradient(to bottom, #003366, #6699cc); /* Gradient background */
+  background: linear-gradient(to bottom, #036, #69c); /* Gradient background */
   padding: 40px; /* Add spacing around the block */
   min-height: 700px; /* Ensure consistent height */
 }
