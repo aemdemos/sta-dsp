@@ -6,7 +6,7 @@
   flex-direction: row; /* Ensure text and image are side by side */
   align-items: center; /* Vertically align items */
   justify-content: space-between; /* Create space between text and image */
-  background: linear-gradient(to right, #f7e2e2 35%, #003366 65%); /* Refine proportions */
+  background: linear-gradient(to right, #f7e2e2 35%, #036 65%); /* Refine proportions */
 }
 
 .hero-container > .hero-wrapper > .hero > div {
@@ -45,16 +45,16 @@
   margin: 0;
   line-height: 1.2; /* Adjust line height */
   font-size: var(--heading-font-size-l); /* Match font size */
-  color: #003366;
+  color: #036;
 }
 
 .hero-container > .hero-wrapper > .hero p {
   margin: 0 0 10px; /* Adjust spacing */
   font-size: var(--body-font-size-s); /* Match font size */
-  color: #003366;
+  color: #036;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .hero-container > .hero-wrapper {
     flex-direction: column; /* Stack elements vertically */
     padding: 20px; /* Add padding for smaller screens */
