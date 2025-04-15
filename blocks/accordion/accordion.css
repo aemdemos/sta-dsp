@@ -5,7 +5,7 @@
   max-width: 800px; /* Constrain max width */
   margin: 0 auto; /* Center horizontally */
   padding: 2rem; /* Add padding around the block */
-  background-color: #ffffff; /* Set white background */
+  background-color: #fff; /* Set white background */
 }
 
 .accordion-wrapper > .accordion.block {
@@ -16,7 +16,7 @@
 
 .accordion-wrapper > .accordion.block > details {
   border: none; /* Remove full border */
-  border-bottom: 1px solid #cccccc; /* Add thin horizontal separator */
+  border-bottom: 1px solid #ccc; /* Add thin horizontal separator */
   padding-bottom: 1rem; /* Add spacing below each accordion item */
 }
 
@@ -41,7 +41,7 @@
   position: relative;
   width: 8px; /* Increase caret size */
   height: 8px; /* Increase caret size */
-  border: 2px solid #ff6600; /* Orange caret color */
+  border: 2px solid #f60; /* Orange caret color */
   border-width: 2px 2px 0 0; 
   transform: rotate(135deg); /* Create caret shape */
   transition: transform 0.2s; /* Smooth rotation */
@@ -54,7 +54,7 @@
 .accordion-wrapper > .accordion.block > details .accordion-item-body {
   padding-top: 1rem; /* Add spacing above accordion body content */
   font-size: 1rem; /* Regular font size for body text */
-  color: #666666; /* Gray color for body content */
+  color: #666; /* Gray color for body content */
   background-color: transparent; /* Remove background color */
 }
 
@@ -64,7 +64,7 @@
   display: block;
   font-size: 2rem; /* Large font size for title */
   font-weight: bold; /* Bold text for title */
-  color: #ff6600; /* Orange color for title */
+  color: #f60; /* Orange color for title */
   margin-bottom: 0.5rem; /* Reduce spacing below title */
 }
 
@@ -72,7 +72,7 @@
   content: 'Want to know more about biomarker testing? Here are answers to common questions:';
   display: block;
   font-size: 1rem; /* Regular font size for subtitle */
-  color: #666666; /* Gray color for subtitle */
+  color: #666; /* Gray color for subtitle */
   line-height: 1.5; /* Improve subtitle readability */
   font-weight: normal; /* Ensure regular weight for non-bold text */
   margin-top: 0.5rem; /* Position subtitle closer to the title */
