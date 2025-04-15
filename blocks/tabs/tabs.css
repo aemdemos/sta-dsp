@@ -34,17 +34,17 @@
 }
 
 .tabs-wrapper > .block.tabs > .tabs-list button[aria-selected="true"] {
-  color: #FFFFFF; /* Highlight the active tab with white text */
+  color: #FFF; /* Highlight the active tab with white text */
   font-weight: bold; /* Optional: make selected tab bold */
 }
 
 .tabs-wrapper > .block.tabs > .tabs-panel {
   flex: 2; /* Take up 2/3 of the width */
-  background: #FFFFFF; /* Use a white background for contrast */
+  background: #FFF; /* Use a white background for contrast */
   border-radius: 10px; /* Add rounded corners */
   padding: 20px; /* Add internal padding */
   color: #084968; /* Use dark teal text color */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%); /* Add a subtle shadow */
 }
 
 .tabs-wrapper > .block.tabs > .tabs-panel a {
@@ -52,7 +52,7 @@
   text-decoration: none; /* Remove underline */
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .tabs-wrapper {
     flex-direction: column; /* Stack elements vertically */
     gap: 10px; /* Adjust spacing for smaller screens */
