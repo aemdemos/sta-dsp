@@ -1,51 +1,53 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Define the header row exactly as specified
+  const rows = [];
+
+  // Header row for the block
   const headerRow = ['Columns'];
+  rows.push(headerRow);
 
-  // Retrieve the steps and their content dynamically
-  const steps = element.querySelectorAll('.card');
+  // Extract relevant data from element for the columns block
+  const columns = Array.from(element.querySelectorAll('.card')).map(card => {
+    const img = card.querySelector('img');
+    const title = card.querySelector('h2');
+    const description = card.querySelector('p');
+    const button = card.querySelector('a.button');
 
-  const columnsRow = Array.from(steps).map((step) => {
-    const stepHeader = step.querySelector('h5')?.textContent || '';
-    const stepTitle = step.querySelector('h2')?.textContent || '';
-    const stepDescription = step.querySelector('p')?.textContent || '';
-    const image = step.querySelector('img');
+    const content = [];
 
-    const imgElement = image ? Object.assign(document.createElement('img'), {
-      src: image.src,
-      alt: image.alt,
-    }) : '';
+    if (title) {
+      const titleEl = document.createElement('p');
+      titleEl.textContent = title.textContent;
+      content.push(titleEl);
+    }
 
-    // Combine step details properly into an array of HTML elements
-    const stepContent = [
-      Object.assign(document.createElement('strong'), { textContent: stepHeader }),
-      document.createElement('br'),
-      Object.assign(document.createElement('span'), { textContent: stepTitle }),
-      document.createElement('br'),
-      Object.assign(document.createElement('p'), { textContent: stepDescription }),
-    ];
+    if (description) {
+      const descriptionEl = document.createElement('p');
+      descriptionEl.textContent = description.textContent;
+      content.push(descriptionEl);
+    }
 
-    return [imgElement, stepContent];
+    if (img) {
+      const imgEl = document.createElement('img');
+      imgEl.src = img.src;
+      imgEl.alt = img.alt;
+      content.push(imgEl);
+    }
+
+    if (button) {
+      const buttonEl = document.createElement('a');
+      buttonEl.href = button.href;
+      buttonEl.textContent = button.textContent;
+      content.push(buttonEl);
+    }
+
+    return content;
   });
 
-  // Add Learn More link if available dynamically
-  const learnMoreLink = element.querySelector('#dto-btn');
-  if (learnMoreLink) {
-    const linkElement = Object.assign(document.createElement('a'), {
-      href: learnMoreLink.href,
-      textContent: learnMoreLink.textContent,
-      target: '_blank',
-      className: learnMoreLink.className,
-    });
-    columnsRow.push([linkElement]);
-  }
+  rows.push(columns);
 
-  // Compile the final table structure
-  const cells = [headerRow, ...columnsRow];
+  const blockTable = WebImporter.DOMUtils.createTable(rows, document);
 
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-
-  // Replace original element dynamically with the new block
-  element.replaceWith(block);
+  // Replace the original element with the new block table
+  element.replaceWith(blockTable);
 }

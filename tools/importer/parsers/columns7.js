@@ -1,31 +1,50 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract the relevant content from the input element
-  const columns = [];
+  // Helper to extract the image
+  const extractImage = (imgEl) => {
+    if (!imgEl) return null;
+    const img = document.createElement('img');
+    img.src = imgEl.src;
+    img.alt = imgEl.alt;
+    img.width = imgEl.width;
+    img.height = imgEl.height;
+    return img;
+  };
 
-  // Extract the left column content
-  const leftColumn = document.createElement('div');
-  const image = element.querySelector('img');
-  const heading = element.querySelector('h2');
-  const paragraph = element.querySelector('p');
-  if (image) leftColumn.appendChild(image.cloneNode(true));
-  if (heading) leftColumn.appendChild(heading.cloneNode(true));
-  if (paragraph) leftColumn.appendChild(paragraph.cloneNode(true));
-  columns.push(leftColumn);
+  // Extracting first column content
+  const imgEl = element.querySelector('.col-lg-6 img');
+  const firstColumnImage = extractImage(imgEl);
+  const firstColumnHeadingEl = element.querySelector('.col-lg-6 h2');
+  const firstColumnHeading = firstColumnHeadingEl ? firstColumnHeadingEl.textContent : '';
+  const firstColumnParagraphEl = element.querySelector('.col-lg-6 p');
+  const firstColumnParagraph = firstColumnParagraphEl ? firstColumnParagraphEl.textContent : '';
 
-  // Extract the right column content
-  const rightColumn = document.createElement('div');
-  const cardContent = element.querySelector('#questions-doctor .card-content__text');
-  if (cardContent) rightColumn.appendChild(cardContent.cloneNode(true));
-  columns.push(rightColumn);
+  const firstColumnContent = [];
+  if (firstColumnImage) firstColumnContent.push(firstColumnImage);
+  firstColumnContent.push(document.createElement('br'));
+  if (firstColumnHeading) firstColumnContent.push(document.createTextNode(firstColumnHeading));
+  firstColumnContent.push(document.createElement('br'));
+  if (firstColumnParagraph) firstColumnContent.push(document.createTextNode(firstColumnParagraph));
 
-  // Create the block table
+  // Extracting second column content
+  const secondColumnCardHeadingEl = element.querySelector('#questions-doctor h5');
+  const secondColumnCardHeading = secondColumnCardHeadingEl ? secondColumnCardHeadingEl.textContent : '';
+  const secondColumnListEl = element.querySelector('#questions-doctor ul');
+  const secondColumnList = secondColumnListEl ? secondColumnListEl.cloneNode(true) : null;
+
+  const secondColumnContent = [];
+  if (secondColumnCardHeading) secondColumnContent.push(document.createTextNode(secondColumnCardHeading));
+  secondColumnContent.push(document.createElement('br'));
+  if (secondColumnList) secondColumnContent.push(secondColumnList);
+
+  // Creating the table
   const cells = [
     ['Columns'],
-    columns
+    [firstColumnContent, secondColumnContent]
   ];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the new block table
-  element.replaceWith(block);
+  const table = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace the element
+  element.replaceWith(table);
 }

@@ -1,37 +1,52 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract the logo image
-  const logoElement = element.querySelector('.logo a img');
-  const logo = document.createElement('img');
-  logo.src = logoElement ? logoElement.src : '';
-  logo.alt = logoElement ? logoElement.alt : '';
+  // Helper function to extract data from element
+  const createLink = (href, text) => {
+    const link = document.createElement('a');
+    link.href = href;
+    link.textContent = text;
+    return link;
+  };
 
-  // Extract navigation links
-  const navItems = element.querySelectorAll('nav .navigation-items ul li');
-  const navLinks = Array.from(navItems).map((navItem) => {
-    const anchor = navItem.querySelector('a');
-    if (anchor) {
-      const link = document.createElement('a');
-      link.href = anchor.href;
-      link.textContent = anchor.textContent;
-      return link;
+  // Extracting content
+  const logoImage = element.querySelector('.logo img');
+  const logo = logoImage ? document.createElement('img') : null;
+  if (logo) {
+    logo.src = logoImage.src;
+    logo.alt = logoImage.alt;
+  }
+
+  const navItems = Array.from(element.querySelectorAll('.navigation-items a')).map((navItem) => {
+    if (navItem.id === 'signup-nav') {
+      return createLink('/sign-up', navItem.textContent);
     }
-    return document.createTextNode(''); // Handle missing anchors
+    return createLink(navItem.href, navItem.textContent);
   });
 
-  // Create the header row (type of block)
+  const toggleButtonImages = Array.from(element.querySelectorAll('.navigation-toggle-btn img')).map((img) => {
+    const image = document.createElement('img');
+    image.src = img.src;
+    image.alt = img.alt;
+    return image;
+  });
+
+  // Header row
   const headerRow = ['Columns'];
 
-  // Create the second row with logo and navigation links
-  const secondRow = [logo, navLinks];
+  // Content rows
+  const contentRow1 = [logo];
+  const contentRow2 = [toggleButtonImages];
+  const navRow = [navItems];
 
-  // Create the block table
   const cells = [
     headerRow,
-    secondRow,
+    contentRow1,
+    contentRow2,
+    navRow,
   ];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Replace the original element with the new block
-  element.replaceWith(block);
+  const blockTable = WebImporter.DOMUtils.createTable(cells, document);
+
+  // Replace original element
+  element.replaceWith(blockTable);
 }

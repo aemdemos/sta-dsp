@@ -1,35 +1,33 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Validate input
-  if (!element || !document) {
-    throw new Error('Invalid element or document provided');
-  }
+  const cells = [];
 
-  // Extracting the content dynamically from the provided HTML
-  const logoImage = element.querySelector('.logo img');
-  const videoURL = 'https://vimeo.com/454418448'; // Example URL, should ideally be dynamically extracted if in HTML
-
-  if (!logoImage) {
-    throw new Error('Logo image missing');
-  }
-
+  // Define the header row exactly as specified in the example
   const headerRow = ['Embed'];
+  cells.push(headerRow);
 
-  // Create the content row dynamically
-  const imageElement = document.createElement('img');
-  imageElement.src = logoImage.src;
-  imageElement.alt = logoImage.alt;
+  // Extract logo image and its link
+  const logoContainer = element.querySelector('.logo a');
+  const logoImage = logoContainer.querySelector('img');
+  const logoLink = document.createElement('a');
+  logoLink.href = logoContainer.href;
+  logoLink.appendChild(logoImage.cloneNode(true));
 
-  const linkElement = document.createElement('a');
-  linkElement.href = videoURL;
-  linkElement.textContent = videoURL;
+  // Extract navigation links
+  const navLinks = Array.from(element.querySelectorAll('.navigation-items a')).map(link => {
+    const navLink = document.createElement('a');
+    navLink.href = link.href;
+    navLink.textContent = link.textContent;
+    return navLink;
+  });
 
-  const contentRow = [[imageElement, linkElement]]; // Ensuring proper formatting
+  // Consolidate all content into a single cell
+  const contentCell = [logoLink, ...navLinks];
+  cells.push([contentCell]);
 
-  const tableData = [headerRow, ...contentRow];
+  // Create the table with extracted data
+  const table = WebImporter.DOMUtils.createTable(cells, document);
 
-  const table = WebImporter.DOMUtils.createTable(tableData, document);
-
-  // Replace the original element with the new block table
+  // Replace the element with the new structured table
   element.replaceWith(table);
 }

@@ -1,26 +1,31 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  const headerRow = ['Accordion'];
-  const rows = [];
+  // Extract the FAQ heading and introductory paragraph
+  const heading = element.querySelector('h2');
+  const introParagraph = element.querySelector('p');
 
-  const accordionItems = element.querySelectorAll('h3');
-  accordionItems.forEach((item) => {
-    const titleButton = item.querySelector('button');
-    const title = titleButton ? titleButton.textContent.trim() : '';
+  // Extract accordion items
+  const accordionItems = element.querySelectorAll('.accordion h3');
+  const accordionPanels = element.querySelectorAll('.accordion section');
 
-    const contentSection = item.nextElementSibling;
-    const content = contentSection ? contentSection.innerHTML.trim() : '';
+  // Prepare table data
+  const tableData = [];
 
-    const titleCell = document.createElement('p');
-    titleCell.textContent = title;
+  // Header row
+  tableData.push(['Accordion']);
 
-    const contentCell = document.createElement('div');
-    contentCell.innerHTML = content;
+  // Accordion content rows
+  accordionItems.forEach((item, index) => {
+    const title = item.textContent.trim();
+    const content = accordionPanels[index];
+    const contentElements = Array.from(content.childNodes);
 
-    rows.push([titleCell, contentCell]);
+    tableData.push([title, contentElements]);
   });
 
-  const cells = [headerRow, ...rows];
-  const block = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(block);
+  // Create the block table
+  const accordionTable = WebImporter.DOMUtils.createTable(tableData, document);
+
+  // Replace the original element with the new block table
+  element.replaceWith(accordionTable);
 }

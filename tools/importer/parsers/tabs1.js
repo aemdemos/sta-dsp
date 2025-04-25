@@ -1,39 +1,35 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract the header content from the element
-  const header = 'Tabs';
+  // Extract header row for Tabs block
+  const headerRow = ['Tabs'];
 
-  // Extract tab data
-  const titleElement = element.querySelector('h2');
-  const descriptionElement = element.querySelector('p');
-  const links = Array.from(element.querySelectorAll('a'));
+  // Extract tab labels and associated links dynamically
+  const tabRows = [];
 
-  // Build the rows for the block table
-  const rows = [
-    [header],
-  ];
+  const buttons = element.querySelectorAll('.button-group a');
 
-  links.forEach((link) => {
-    const tabLabel = link.textContent.trim();
-    const tabContent = document.createElement('div');
+  if (buttons.length === 0) {
+    console.warn('No buttons found in the element.');
+  }
 
-    // Add the description
-    const description = document.createElement('p');
-    description.textContent = descriptionElement.textContent.trim();
-    tabContent.appendChild(description);
-
-    // Add the link itself
-    const linkElement = document.createElement('a');
-    linkElement.href = link.href;
-    linkElement.textContent = link.textContent.trim();
-    tabContent.appendChild(linkElement);
-
-    rows.push([tabLabel, tabContent]);
+  buttons.forEach((button) => {
+    const label = button.textContent.trim(); // Extract tab label dynamically
+    const link = document.createElement('a');
+    link.href = button.href;
+    link.textContent = label;
+    tabRows.push([label, link]);
   });
 
-  // Create the table
-  const blockTable = WebImporter.DOMUtils.createTable(rows, document);
+  if (tabRows.length === 0) {
+    console.warn('No tab rows created. Ensure buttons have correct structure.');
+  }
 
-  // Replace the original element with the new block table
+  // Combine header row and tab rows into table structure
+  const tableData = [headerRow, ...tabRows];
+
+  // Create the table block using WebImporter.DOMUtils.createTable
+  const blockTable = WebImporter.DOMUtils.createTable(tableData, document);
+
+  // Replace the original element with the block table
   element.replaceWith(blockTable);
 }

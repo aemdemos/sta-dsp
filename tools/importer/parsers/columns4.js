@@ -1,40 +1,42 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract components safely to handle missing data
-  const title = element.querySelector('h2')?.textContent.trim() || '';
+  // Extract the heading and description
+  const heading = element.querySelector('h2')?.textContent.trim() || '';
   const description = element.querySelector('p')?.textContent.trim() || '';
 
-  const nameInput = element.querySelector('input[name="fullName"]') || document.createElement('input');
-  const emailInput = element.querySelector('input[name="emailAddress"]') || document.createElement('input');
-  const checkboxLabel = element.querySelector('label[for="iConsent"]')?.textContent.trim() || '';
-  const legalCopyContent = element.querySelector('.legal-copy')?.innerHTML.trim() || '';
+  // Extract the form fields and related content
+  const form = element.querySelector('form');
+  const fullNameLabel = form.querySelector('label[for="fullName"]')?.textContent.trim() || 'Full name';
+  const emailLabel = form.querySelector('label[for="emailAddress"]')?.textContent.trim() || 'Email address';
+  const consentText = form.querySelector('label[for="iConsent"]')?.textContent.trim() || '';
 
-  const submitButtonElement = element.querySelector('#signup') || document.createElement('button');
-  const errorMessage = element.querySelector('.text-error')?.textContent.trim() || '';
+  // Extract and structure legal text properly
+  const legalCopyElement = form.querySelector('.legal-copy');
+  const legalText = legalCopyElement ? Array.from(legalCopyElement.querySelectorAll('p')).map(p => p.outerHTML).join('') : '';
 
-  // Create header row matching the example
-  const headerRow = ['Columns'];
+  // Extract button text
+  const buttonText = form.querySelector('#signup')?.value || 'Sign up';
 
-  // Create content rows with consistent structure
-  const contentRow = [
-    [document.createTextNode(title), document.createElement('br'), document.createTextNode(description)],
-    [nameInput, document.createElement('br'), emailInput, document.createElement('br'), document.createTextNode(checkboxLabel)]
+  // Extract error message
+  const errorMessage = form.querySelector('.text-error')?.textContent.trim() || 'All fields are required.';
+
+  // Create the table content dynamically without unnecessary wrappers
+  const tableContent = [
+    ['Columns'], // Exact header row
+    [
+      heading,
+      description,
+      fullNameLabel,
+      emailLabel,
+      consentText,
+      legalText,
+      buttonText,
+      errorMessage,
+    ],
   ];
 
-  const legalRow = [
-    document.createRange().createContextualFragment(legalCopyContent),
-    submitButtonElement
-  ];
+  const table = WebImporter.DOMUtils.createTable(tableContent, document);
 
-  const footerRow = [document.createTextNode(errorMessage)];
-
-  const cells = [
-    headerRow,
-    contentRow,
-    legalRow,
-    footerRow
-  ];
-
-  const blockTable = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(blockTable);
+  // Replace the original element with the new table
+  element.replaceWith(table);
 }

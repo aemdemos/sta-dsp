@@ -1,38 +1,48 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  const headerRow = ['Hero'];
+  const cells = [];
 
-  // Extract image
+  // Add header row
+  cells.push(['Hero']);
+
+  // Get all relevant content
+  const title = element.querySelector('h2');
+  const paragraphs = element.querySelectorAll('p');
   const image = element.querySelector('img');
-  const imageElement = document.createElement('img');
+
+  // Validate the data exists
+  if (title) {
+    const titleContent = document.createElement('h1');
+    titleContent.innerHTML = title.innerHTML;
+    cells.push([titleContent]);
+  } else {
+    console.warn('Title not found');
+  }
+
+  if (paragraphs.length > 0) {
+    const content = document.createElement('div');
+    paragraphs.forEach((p) => {
+      const clonedParagraph = document.createElement('p');
+      clonedParagraph.innerHTML = p.innerHTML;
+      content.appendChild(clonedParagraph);
+    });
+    cells.push([content]);
+  } else {
+    console.warn('Paragraphs not found');
+  }
+
   if (image) {
+    const imageElement = document.createElement('img');
     imageElement.src = image.src;
     imageElement.alt = image.alt;
+    cells.push([imageElement]);
+  } else {
+    console.warn('Image not found');
   }
 
-  // Extract the heading
-  const heading = element.querySelector('h2');
-  const headingElement = document.createElement('h1');
-  if (heading) {
-    headingElement.innerHTML = heading.innerHTML;
-  }
+  // Create table
+  const blockTable = WebImporter.DOMUtils.createTable(cells, document);
 
-  // Extract the paragraphs
-  const paragraphs = Array.from(element.querySelectorAll('p'));
-
-  // Combine content into a single cell
-  const contentCell = document.createElement('div');
-  contentCell.appendChild(headingElement);
-  paragraphs.forEach((paragraph) => {
-    const paragraphElement = document.createElement('p');
-    paragraphElement.innerHTML = paragraph.innerHTML;
-    contentCell.appendChild(paragraphElement);
-  });
-  contentCell.appendChild(imageElement);
-
-  const tableCells = [headerRow, [contentCell]];
-
-  const block = WebImporter.DOMUtils.createTable(tableCells, document);
-
-  element.replaceWith(block);
+  // Replace element
+  element.replaceWith(blockTable);
 }

@@ -11,58 +11,72 @@
  */
 /* global WebImporter */
 /* eslint-disable no-console */
+import columns9Parser from './parsers/columns9.js';
+import cards10Parser from './parsers/cards10.js';
 import accordion6Parser from './parsers/accordion6.js';
 import columns7Parser from './parsers/columns7.js';
-import tabs1Parser from './parsers/tabs1.js';
-import columns9Parser from './parsers/columns9.js';
+import columns8Parser from './parsers/columns8.js';
 import hero2Parser from './parsers/hero2.js';
+import tabs1Parser from './parsers/tabs1.js';
 import columns5Parser from './parsers/columns5.js';
-import cards10Parser from './parsers/cards10.js';
 import columns3Parser from './parsers/columns3.js';
-import cards14Parser from './parsers/cards14.js';
-import embedVideo17Parser from './parsers/embedVideo17.js';
-import columns4Parser from './parsers/columns4.js';
-import hero13Parser from './parsers/hero13.js';
 import columns15Parser from './parsers/columns15.js';
+import cards14Parser from './parsers/cards14.js';
 import hero11Parser from './parsers/hero11.js';
 import hero16Parser from './parsers/hero16.js';
-import cards19Parser from './parsers/cards19.js';
 import cards18Parser from './parsers/cards18.js';
-import columns8Parser from './parsers/columns8.js';
+import hero13Parser from './parsers/hero13.js';
+import cards19Parser from './parsers/cards19.js';
+import embedVideo17Parser from './parsers/embedVideo17.js';
+import columns4Parser from './parsers/columns4.js';
 import columns12Parser from './parsers/columns12.js';
 import headerParser from './parsers/header.js';
 import metadataParser from './parsers/metadata.js';
+import cleanupTransformer from './transformers/cleanup.js';
+import imageTransformer from './transformers/images.js';
+import linkTransformer from './transformers/links.js';
+import { TransformHook } from './transformers/transform.js';
 import {
   generateDocumentPath,
   handleOnLoad,
-  postTransformRules,
-  preTransformRules,
 } from './import.utils.js';
 
 const parsers = {
   metadata: metadataParser,
+  columns9: columns9Parser,
+  cards10: cards10Parser,
   accordion6: accordion6Parser,
   columns7: columns7Parser,
-  tabs1: tabs1Parser,
-  columns9: columns9Parser,
+  columns8: columns8Parser,
   hero2: hero2Parser,
+  tabs1: tabs1Parser,
   columns5: columns5Parser,
-  cards10: cards10Parser,
   columns3: columns3Parser,
-  cards14: cards14Parser,
-  embedVideo17: embedVideo17Parser,
-  columns4: columns4Parser,
-  hero13: hero13Parser,
   columns15: columns15Parser,
+  cards14: cards14Parser,
   hero11: hero11Parser,
   hero16: hero16Parser,
-  cards19: cards19Parser,
   cards18: cards18Parser,
-  columns8: columns8Parser,
+  hero13: hero13Parser,
+  cards19: cards19Parser,
+  embedVideo17: embedVideo17Parser,
+  columns4: columns4Parser,
   columns12: columns12Parser,
 };
 
+const transformers = {
+  cleanup: cleanupTransformer,
+  images: imageTransformer,
+  links: linkTransformer,
+};
+
 WebImporter.Import = {
+  transform: (hookName, element, payload) => {
+    // perform any additional transformations to the page
+    Object.entries(transformers).forEach(([, transformerFn]) => (
+      transformerFn.call(this, hookName, element, payload)
+    ));
+  },
   getParserName: ({ name, cluster }) => {
     // Remove invalid filename characters
     let sanitizedString = name.replace(/[^a-zA-Z0-9-_\s]/g, ' ').trim();
@@ -109,13 +123,12 @@ function transformPage(main, { inventory, ...source }) {
 
   // get dom elements for each block on the current page
   const blockElements = inventoryBlocks
-    .map((block) => {
-      const foundInstance = block.instances.find((instance) => instance.url === originalURL);
-      if (foundInstance) {
-        block.element = WebImporter.Import.getElementByXPath(document, foundInstance.xpath);
-      }
-      return block;
-    })
+    .flatMap((block) => block.instances
+      .filter((instance) => instance.url === originalURL)
+      .map((instance) => ({
+        ...block,
+        element: WebImporter.Import.getElementByXPath(document, instance.xpath),
+      })))
     .filter((block) => block.element);
 
   // remove fragment elements from the current page
@@ -125,14 +138,21 @@ function transformPage(main, { inventory, ...source }) {
     }
   });
 
+  // before page transform hook
+  WebImporter.Import.transform(TransformHook.beforePageTransform, main, { ...source });
+
   // transform all block elements using parsers
   [...pageElements, ...blockElements].forEach(({ name, cluster, element = main }) => {
     const parserName = WebImporter.Import.getParserName({ name, cluster });
     const parserFn = parsers[parserName];
     if (!parserFn) return;
-    // parse the element
     try {
+      // before parse hook
+      WebImporter.Import.transform(TransformHook.beforeParse, element, { ...source });
+      // parse the element
       parserFn.call(this, element, { ...source });
+      // after parse hook
+      WebImporter.Import.transform(TransformHook.afterParse, element, { ...source });
     } catch (e) {
       console.warn(`Failed to parse block: ${name} from cluster: ${cluster}`, e);
     }
@@ -212,7 +232,7 @@ export default {
   },
 
   transform: async (source) => {
-    const { document, url, params: { originalURL } } = source;
+    const { document, params: { originalURL } } = source;
 
     // sanitize the original URL
     /* eslint-disable no-param-reassign */
@@ -240,14 +260,8 @@ export default {
 
     let main = document.body;
 
-    // pre-transform rules
-    preTransformRules({
-      root: main,
-      document,
-      url,
-      publishUrl,
-      originalURL,
-    });
+    // before transform hook
+    WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...source, publishUrl });
 
     // perform the transformation
     let path = null;
@@ -268,12 +282,8 @@ export default {
       path = generateDocumentPath(source);
     }
 
-    // post transform rules
-    postTransformRules({
-      root: main,
-      document,
-      originalURL,
-    });
+    // after transform hook
+    WebImporter.Import.transform(TransformHook.afterTransform, main, { ...source, publishUrl });
 
     return [{
       element: main,

@@ -1,40 +1,47 @@
 /* global WebImporter */
+
 export default function parse(element, { document }) {
-  const headerRow = ['Cards'];
+  // Helper function to extract content from a card
+  const extractCardData = (cardElement) => {
+    const title = cardElement.querySelector('h3')?.textContent.trim() || '';
+    const description = cardElement.querySelector('p')?.textContent.trim() || '';
+    const linkElement = cardElement.querySelector('a');
+    const link = linkElement ? linkElement.cloneNode(true) : null;
 
-  const rows = Array.from(element.querySelectorAll('.card')).map((card) => {
-    const title = card.querySelector('h3')?.textContent.trim();
-    const description = card.querySelector('p')?.textContent.trim();
-    const ctaLink = card.querySelector('a');
-
-    const ctaText = ctaLink?.textContent.trim();
-    const ctaHref = ctaLink?.href;
-
-    const textContent = [];
-
+    // Combine title, description, and link into one cell
+    const cardContent = [];
     if (title) {
       const titleElement = document.createElement('strong');
       titleElement.textContent = title;
-      textContent.push(titleElement);
+      cardContent.push(titleElement);
     }
-
     if (description) {
       const descriptionElement = document.createElement('p');
       descriptionElement.textContent = description;
-      textContent.push(descriptionElement);
+      cardContent.push(descriptionElement);
+    }
+    if (link) {
+      cardContent.push(link);
     }
 
-    if (ctaText && ctaHref) {
-      const linkElement = document.createElement('a');
-      linkElement.setAttribute('href', ctaHref);
-      linkElement.textContent = ctaText;
-      textContent.push(linkElement);
-    }
+    return cardContent;
+  };
 
-    return ['', textContent];
-  });
+  // Extract cards
+  const cards = Array.from(element.querySelectorAll('.card'));
 
-  const cells = [headerRow, ...rows];
-  const table = WebImporter.DOMUtils.createTable(cells, document);
-  element.replaceWith(table);
+  // Process cards into rows
+  const rows = cards.map((card) => [extractCardData(card)]);
+
+  // Create the table structure
+  const tableData = [
+    ['Cards'],
+    ...rows
+  ];
+
+  // Create the block table
+  const blockTable = WebImporter.DOMUtils.createTable(tableData, document);
+
+  // Replace the original element with the block table
+  element.replaceWith(blockTable);
 }

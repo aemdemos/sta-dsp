@@ -1,24 +1,25 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Extract the title
-  const titleElement = element.querySelector('h1.text-title');
-  const title = document.createElement('h1');
-  title.textContent = titleElement ? titleElement.textContent : '';
+  // Create the header row, exactly as specified in the example
+  const headerRow = ['Hero'];
 
-  // Extract the subheading
-  const subheadingElement = element.querySelector('p');
-  const subheading = document.createElement('p');
-  subheading.textContent = subheadingElement ? subheadingElement.textContent : '';
+  // Dynamically extract the title and subheading from the HTML
+  const title = element.querySelector('h1.text-title');
+  const subheading = element.querySelector('p');
 
-  // Create the table cells
-  const cells = [
-    ['Hero'],
-    [[title, subheading]] // Consolidate contents into a single cell in the second row
+  // Combine all content into a single cell (single column) for the content row
+  const contentRow = [];
+  if (title) contentRow.push(title);
+  if (subheading) contentRow.push(subheading);
+
+  const tableData = [
+    headerRow,
+    [contentRow], // Ensure all content is combined into one column
   ];
 
   // Create the block table
-  const blockTable = WebImporter.DOMUtils.createTable(cells, document);
+  const blockTable = WebImporter.DOMUtils.createTable(tableData, document);
 
-  // Replace the original element with the block table
+  // Replace the original element with the new block structure
   element.replaceWith(blockTable);
 }

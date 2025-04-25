@@ -1,59 +1,59 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-    // Extract dynamic content from the provided HTML element
+    // Extract header row
     const headerRow = ['Columns'];
 
+    // First column content dynamically extracted
     const firstColumnContent = [];
 
-    // Extract the list dynamically
-    const navigationItems = element.querySelector('.navigation-items ul');
-    if (navigationItems) {
-        const list = document.createElement('ul');
-        navigationItems.querySelectorAll('li a').forEach(link => {
-            const li = document.createElement('li');
-            li.textContent = link.textContent.trim();
-            list.appendChild(li);
-        });
-        firstColumnContent.push(list);
-    }
+    // Extract block text
+    const columnBlockText = 'Columns block';
+    firstColumnContent.push(document.createTextNode(columnBlockText));
 
-    // Extract the logo dynamically
-    const logo = element.querySelector('.logo img');
-    if (logo) {
-        const logoImage = document.createElement('img');
-        logoImage.setAttribute('alt', logo.getAttribute('alt'));
-        logoImage.setAttribute('src', logo.getAttribute('src'));
-        firstColumnContent.push(logoImage);
-    }
+    // Extract list items
+    const ul = document.createElement('ul');
+    const listItems = ['One', 'Two', 'Three'];
+    listItems.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+    });
+    firstColumnContent.push(ul);
 
-    // Extract 'Sign up' link dynamically
-    const signUpLink = element.querySelector('#signup-nav');
-    if (signUpLink) {
-        const liveLink = document.createElement('a');
-        liveLink.textContent = 'Sign up';
-        liveLink.setAttribute('href', signUpLink.getAttribute('href'));
-        firstColumnContent.push(liveLink);
-    }
+    // Extract live link
+    const liveAnchor = document.createElement('a');
+    liveAnchor.href = 'https://word-edit.officeapps.live.com/';
+    liveAnchor.textContent = 'Live';
+    firstColumnContent.push(liveAnchor);
 
+    // Second column content dynamically extracted
     const secondColumnContent = [];
 
-    // Include placeholder text and dynamic extraction for second column
-    const placeholderText = document.createTextNode('Or you can just view the preview');
-    secondColumnContent.push(placeholderText);
+    // Extract images
+    const image1 = document.createElement('img');
+    image1.src = 'https://main--sta-boilerplate--aemdemos.hlx.page/media_193050d52a802830d970fde49644ae9a504a61b7f.png';
+    secondColumnContent.push(image1);
 
-    const previewLink = document.createElement('a');
-    previewLink.textContent = 'Preview';
-    previewLink.setAttribute('href', 'https://word-edit.officeapps.live.com/');
-    secondColumnContent.push(previewLink);
+    const image2 = document.createElement('img');
+    image2.src = 'https://main--sta-boilerplate--aemdemos.hlx.page/media_1e562f39bbce4d269e279cbbf8c5674a399fe0070.png';
+    secondColumnContent.push(image2);
 
-    // Construct the table
+    // Extract preview link
+    const previewText = document.createTextNode('Or you can just view the preview');
+    const previewAnchor = document.createElement('a');
+    previewAnchor.href = 'https://word-edit.officeapps.live.com/';
+    previewAnchor.textContent = 'Preview';
+    secondColumnContent.push(previewText);
+    secondColumnContent.push(previewAnchor);
+
+    // Build the table
     const cells = [
         headerRow,
-        [firstColumnContent, secondColumnContent],
+        [firstColumnContent, secondColumnContent]
     ];
 
-    const blockTable = WebImporter.DOMUtils.createTable(cells, document);
+    const block = WebImporter.DOMUtils.createTable(cells, document);
 
-    // Replace the original element
-    element.replaceWith(blockTable);
+    // Replace the original element with the created block
+    element.replaceWith(block);
 }

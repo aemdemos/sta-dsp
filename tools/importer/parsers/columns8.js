@@ -1,35 +1,44 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  const cells = [];
+  // Step 1: Create section break (hr) element
+  const hr = document.createElement('hr');
 
-  // First row: Header row
-  const headerRow = ['Columns'];
-  cells.push(headerRow);
+  // There is NO "section metadata" block defined in the Example Markdown Structure.
+  // Hence, section metadata table will not be added.
 
-  // Content extraction
-  const leftCol = document.createElement('div');
-  const title = element.querySelector('h2');
-  const description = element.querySelector('p');
-  const sectionTitle = element.querySelector('h4');
-  const list = element.querySelector('ul');
+  // Step 2: Initialize rows for the "Columns" block table.
+  const rows = [];
+  // Add header row matching the example (block name)
+  rows.push(['Columns']);
 
-  if (title) leftCol.appendChild(title);
-  if (description) leftCol.appendChild(description);
-  if (sectionTitle) leftCol.appendChild(sectionTitle);
-  if (list) leftCol.appendChild(list);
+  // Step 3: Extract columns from the element dynamically
+  const columns = element.querySelectorAll('.col');
+  const contentCells = Array.from(columns).map((col) => {
+    const content = [];
 
-  const rightCol = document.createElement('div');
-  const image = element.querySelector('img');
+    col.childNodes.forEach((child) => {
+      if (child.nodeType === 1) { // Fix: Use numeric constant for ELEMENT_NODE
+        if (child.tagName === 'IMG') {
+          // Dynamically handle image elements
+          const img = document.createElement('img');
+          img.src = child.src;
+          img.alt = child.alt;
+          content.push(img);
+        } else {
+          // Handle all other elements directly
+          content.push(child);
+        }
+      }
+    });
 
-  if (image) rightCol.appendChild(image);
+    return content;
+  });
 
-  // Second row: Content row
-  const contentRow = [leftCol, rightCol];
-  cells.push(contentRow);
+  rows.push(contentCells); // Add extracted content to rows
 
-  // Create the table block
-  const table = WebImporter.DOMUtils.createTable(cells, document);
+  // Step 4: Create the block table
+  const table = WebImporter.DOMUtils.createTable(rows, document);
 
-  // Replace the original element with the table
-  element.replaceWith(table);
+  // Step 5: Replace original element with the new table
+  element.replaceWith(hr, table);
 }

@@ -1,32 +1,49 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
- const headerRow = ['Cards'];
+  // Helper function to extract content from card elements
+  const extractCardData = (cardElement) => {
+    const image = cardElement.querySelector('.card-thumb__img');
+    const heading = cardElement.querySelector('h2');
+    const description = cardElement.querySelector('p');
+    const cta = cardElement.querySelector('a');
 
- const rows = Array.from(element.querySelectorAll('.col')).map((col) => {
-    const image = col.querySelector('.card-thumb__img');
-    const imgElement = document.createElement('img');
-    imgElement.src = image ? image.src : '';
-    imgElement.alt = image ? image.alt : '';
+    const imageElement = document.createElement('img');
+    imageElement.src = image.src;
+    imageElement.alt = image.alt;
 
-    const title = col.querySelector('h2');
-    const titleElement = document.createElement('h2');
-    titleElement.textContent = title ? title.textContent : '';
+    const content = [];
+    if (heading) {
+      const headingElement = document.createElement('strong');
+      headingElement.textContent = heading.textContent;
+      content.push(headingElement);
+    }
+    if (description) {
+      const descriptionElement = document.createElement('p');
+      descriptionElement.textContent = description.textContent;
+      content.push(descriptionElement);
+    }
+    if (cta) {
+      const ctaElement = document.createElement('a');
+      ctaElement.href = cta.href;
+      ctaElement.textContent = cta.textContent;
+      content.push(ctaElement);
+    }
 
-    const description = col.querySelector('p');
-    const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = description ? description.textContent : '';
+    return [imageElement, content];
+  };
 
-    const cta = col.querySelector('a');
-    const ctaElement = document.createElement('a');
-    ctaElement.href = cta ? cta.href : '';
-    ctaElement.textContent = cta ? cta.textContent : '';
+  // Extract all cards
+  const cards = [...element.querySelectorAll('.card')].map(extractCardData);
 
-    const textContent = [titleElement, descriptionElement, ctaElement];
+  // Create the table cells array
+  const cells = [
+    ['Cards'],
+    ...cards.map(([image, content]) => [image, content]),
+  ];
 
-    return [imgElement, textContent];
- });
+  // Create the block table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
- const cells = [headerRow, ...rows];
- const tableBlock = WebImporter.DOMUtils.createTable(cells, document);
- element.replaceWith(tableBlock);
+  // Replace the original element with the new block
+  element.replaceWith(block);
 }

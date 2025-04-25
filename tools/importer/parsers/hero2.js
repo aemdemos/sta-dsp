@@ -1,48 +1,39 @@
 /* global WebImporter */
 export default function parse(element, { document }) {
-  // Define the header row according to the example
-  const headerRow = ['Hero'];
+  // Extracting content from the given element
+  const title = element.querySelector('.hero-text__title')?.textContent.trim();
+  const eyebrowText = element.querySelector('.hero-text__eyebrow-1')?.textContent.trim();
+  const image = element.querySelector('img');
 
-  // Extract dynamic content
-  const eyebrow = element.querySelector('.hero-text__eyebrow-1')?.textContent.trim() || '';
-  const title = element.querySelector('.hero-text__title')?.textContent.trim() || '';
-  const imgEl = element.querySelector('img');
-  const image = imgEl ? document.createElement('img') : null;
-  if (image) {
-    image.src = imgEl.src;
-    image.alt = imgEl.alt;
+  // Creating elements for title and eyebrow
+  const headingElement = title ? document.createElement('h1') : null;
+  if (headingElement) headingElement.textContent = title;
+
+  const eyebrowElement = eyebrowText ? document.createElement('p') : null;
+  if (eyebrowElement) eyebrowElement.textContent = eyebrowText;
+
+  // Ensuring the image element is properly created
+  const imageElement = image ? document.createElement('img') : null;
+  if (imageElement && image.src) {
+    imageElement.src = image.src;
+    imageElement.alt = image.alt || '';
   }
 
-  const patientPortrayal = element.querySelector('.hero-text__patient-portrayal')?.textContent.trim() || '';
-
-  // Create content cell with all extracted elements
+  // Combining all content into a single cell
   const contentCell = document.createElement('div');
-  if (image) contentCell.appendChild(image);
+  if (eyebrowElement) contentCell.appendChild(eyebrowElement);
+  if (headingElement) contentCell.appendChild(headingElement);
+  if (imageElement) contentCell.appendChild(imageElement);
 
-  if (eyebrow) {
-    const eyebrowElement = document.createElement('p');
-    eyebrowElement.textContent = eyebrow;
-    contentCell.appendChild(eyebrowElement);
-  }
+  // Creating the table cells
+  const cells = [
+    ['Hero'], // Header row with exactly one column
+    [contentCell], // Single cell containing all combined content
+  ];
 
-  if (title) {
-    const titleElement = document.createElement('h1');
-    titleElement.textContent = title;
-    contentCell.appendChild(titleElement);
-  }
+  // Creating the table
+  const block = WebImporter.DOMUtils.createTable(cells, document);
 
-  if (patientPortrayal) {
-    const portrayalElement = document.createElement('small');
-    portrayalElement.textContent = patientPortrayal;
-    contentCell.appendChild(portrayalElement);
-  }
-
-  // Organize into table format
-  const table = WebImporter.DOMUtils.createTable([
-    headerRow, // Header row
-    [contentCell] // Single content cell including all extracted components
-  ], document);
-
-  // Replace the original element
-  element.replaceWith(table);
+  // Replacing the original element with the new block
+  element.replaceWith(block);
 }
