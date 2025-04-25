@@ -22,7 +22,7 @@ function sampleRUM(checkpoint, data) {
       const weight = (window.SAMPLE_PAGEVIEWS_AT_RATE === 'high' && 10)
         || (window.SAMPLE_PAGEVIEWS_AT_RATE === 'low' && 1000)
         || (param === 'on' && 1)
-        || 100;
+        || 10;
       const id = Math.random().toString(36).slice(-4);
       const isSelected = param !== 'off' && Math.random() * weight < 1;
       // eslint-disable-next-line object-curly-newline, max-len
