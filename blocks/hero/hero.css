@@ -1,75 +1,77 @@
 
-.hero-container > .hero-wrapper {
+.hero-wrapper {
   max-width: unset;
   padding: 0;
-  display: flex; /* Enable flexbox for side-by-side layout */
-  flex-direction: row; /* Ensure text and image are side by side */
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Create space between text and image */
-  background: linear-gradient(to right, #f7e2e2 35%, #036 65%); /* Refine proportions */
+  display: flex; /* Ensures side-by-side layout for text and image */
+  flex-direction: row; /* Align text and image horizontally */
+  align-items: center; /* Vertically align text and image */
+  justify-content: space-between; /* Create even spacing between text and image */
+  background: linear-gradient(to right, #F9EAE7 50%, #EAE3F9 50%); /* Match original gradient proportions */
 }
 
-.hero-container > .hero-wrapper > .hero > div {
+.hero-wrapper > .hero {
   display: flex; /* Enable flexbox for second-level layout */
-  flex-direction: row; /* Ensure second-level elements are side by side */
-  align-items: center; /* Vertically align items */
+  flex-direction: row; /* Ensure second-level elements are horizontally aligned */
+  align-items: center; /* Vertically align child elements */
+  gap: 40px; /* Add spacing between text and image */
 }
 
-.hero-container > .hero-wrapper > .hero > div > div:first-child {
-  flex: 1; /* Allow the image container to take up half the space */
-  order: 2; /* Position the image on the right */
+.hero-wrapper > .hero > div > div:first-child {
+  flex: 1; /* Ensure image container occupies half the width */
+  order: 2; /* Position image on the right */
   max-width: 50%; /* Restrict image container width */
   display: flex; /* Enable flexbox within the image container */
-  justify-content: center; /* Center the image */
-  align-items: center; /* Align the image vertically */
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
 }
 
-.hero-container > .hero-wrapper > .hero > div > div:last-child {
-  flex: 1; /* Allow the text container to take up half the space */
-  order: 1; /* Position the text on the left */
-  max-width: 50%; /* Restrict text container width */
-  padding-left: 40px; /* Add spacing between text and image */
-  display: flex; /* Enable flexbox within text container */
-  flex-direction: column; /* Stack text elements vertically */
-  justify-content: center; /* Center text vertically */
-  align-items: flex-start; /* Align text to the left */
-}
-
-.hero-container > .hero-wrapper > .hero > div > div:first-child img {
+.hero-wrapper > .hero > div > div:first-child img {
   object-fit: cover; /* Ensure the image is not stretched */
   width: 100%; /* Make the image responsive */
   height: auto; /* Maintain aspect ratio */
 }
 
-.hero-container > .hero-wrapper > .hero h1 {
-  margin: 0;
-  line-height: 1.2; /* Adjust line height */
-  font-size: var(--heading-font-size-l); /* Match font size */
-  color: #036;
+.hero-wrapper > .hero > div > div:last-child {
+  flex: 1; /* Ensure text container occupies half the width */
+  order: 1; /* Position text on the left */
+  max-width: 50%; /* Restrict text container width */
+  display: flex; /* Enable flexbox within the text container */
+  flex-direction: column; /* Stack text elements vertically */
+  justify-content: center; /* Center text vertically */
+  align-items: flex-start; /* Align text to the left */
+  padding-left: 40px; /* Add spacing between text and image */
 }
 
-.hero-container > .hero-wrapper > .hero p {
-  margin: 0 0 10px; /* Adjust spacing */
-  font-size: var(--body-font-size-s); /* Match font size */
-  color: #036;
+.hero-wrapper > .hero h1 {
+  font-size: 32px; /* Match original headline size */
+  line-height: 1.2; /* Improve readability */
+  color: #003E61; /* Dark teal for headline text */
+  margin: 0;
+}
+
+.hero-wrapper > .hero p {
+  font-size: 14px; /* Match original supporting text size */
+  color: #003E61; /* Dark teal for supporting text */
+  margin: 0 0 10px; /* Add spacing below text */
 }
 
 @media (width <= 768px) {
-  .hero-container > .hero-wrapper {
-    flex-direction: column; /* Stack elements vertically */
+  .hero-wrapper {
+    flex-direction: column; /* Stack text and image vertically */
     padding: 20px; /* Add padding for smaller screens */
   }
 
-  .hero-container > .hero-wrapper > .hero > div {
+  .hero-wrapper > .hero > div {
     flex-direction: column; /* Stack second-level elements vertically */
+    gap: 20px; /* Adjust spacing for smaller screens */
   }
 
-  .hero-container > .hero-wrapper > .hero > div > div {
+  .hero-wrapper > .hero > div > div {
     max-width: 100%; /* Allow full width for both text and image */
-    padding: 0; /* Remove padding */
+    padding: 0; /* Remove unnecessary padding */
   }
 
-  .hero-container > .hero-wrapper > .hero > div > div:first-child img {
+  .hero-wrapper > .hero > div > div:first-child img {
     width: 100%; /* Ensure image scales properly */
     height: auto; /* Maintain aspect ratio */
   }
