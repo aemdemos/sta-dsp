@@ -55,7 +55,7 @@
   margin: 0 0 10px; /* Add spacing below text */
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .hero-wrapper {
     flex-direction: column; /* Stack text and image vertically */
     padding: 20px; /* Add padding for smaller screens */
