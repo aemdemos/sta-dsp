@@ -2,77 +2,66 @@
 .hero-wrapper {
   max-width: unset;
   padding: 0;
-  display: flex; /* Ensures side-by-side layout for text and image */
+  display: flex; /* Side-by-side layout for text and image */
   flex-direction: row; /* Align text and image horizontally */
   align-items: center; /* Vertically align text and image */
-  justify-content: space-between; /* Create even spacing between text and image */
-  background: linear-gradient(to right, #F9EAE7 50%, #EAE3F9 50%); /* Match original gradient proportions */
+  justify-content: space-between; /* Ensure even spacing */
+  background: linear-gradient(to right, #FCEAE9, #E3D9F7); /* Smooth gradient transition */
 }
 
 .hero-wrapper > .hero {
-  display: flex; /* Enable flexbox for second-level layout */
-  flex-direction: row; /* Ensure second-level elements are horizontally aligned */
+  display: flex; /* Enable flexbox on the hero section */
+  flex-direction: row; /* Align elements side by side */
   align-items: center; /* Vertically align child elements */
-  gap: 40px; /* Add spacing between text and image */
+  gap: 60px; /* Increase spacing between text and image */
+}
+
+.hero-wrapper > .hero > div {
+  display: flex; /* Enable flexbox for nested elements */
+  flex-direction: row; /* Ensure nested divs are side by side */
+  flex: 1; /* Equally divide space between text and image containers */
 }
 
 .hero-wrapper > .hero > div > div:first-child {
-  flex: 1; /* Ensure image container occupies half the width */
-  order: 2; /* Position image on the right */
-  max-width: 50%; /* Restrict image container width */
-  display: flex; /* Enable flexbox within the image container */
-  justify-content: center; /* Center the image horizontally */
-  align-items: center; /* Center the image vertically */
-}
-
-.hero-wrapper > .hero > div > div:first-child img {
-  object-fit: cover; /* Ensure the image is not stretched */
-  width: 100%; /* Make the image responsive */
-  height: auto; /* Maintain aspect ratio */
+  flex: 1; /* Ensure text container occupies half the width */
+  order: 1; /* Position text on the left */
+  padding-left: 70px; /* Add spacing on the left */
+  display: flex; /* Enable flexbox for text alignment */
+  justify-content: center; /* Center text vertically */
+  align-items: flex-start; /* Align text to the left */
 }
 
 .hero-wrapper > .hero > div > div:last-child {
-  flex: 1; /* Ensure text container occupies half the width */
-  order: 1; /* Position text on the left */
-  max-width: 50%; /* Restrict text container width */
-  display: flex; /* Enable flexbox within the text container */
-  flex-direction: column; /* Stack text elements vertically */
-  justify-content: center; /* Center text vertically */
-  align-items: flex-start; /* Align text to the left */
-  padding-left: 40px; /* Add spacing between text and image */
+  flex: 1; /* Ensure image container occupies half the width */
+  order: 2; /* Position image on the right */
+  display: flex; /* Enable flexbox for image alignment */
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+}
+
+.hero-wrapper > .hero > div > div:last-child img {
+  object-fit: cover; /* Prevent image distortion */
+  width: 75%; /* Reduce image size for better proportions */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .hero-wrapper > .hero h1 {
-  font-size: 32px; /* Match original headline size */
+  font-size: 2.4rem; /* Adjust headline size */
   line-height: 1.2; /* Improve readability */
-  color: #003E61; /* Dark teal for headline text */
+  color: #003E54; /* Dark teal for headline text */
   margin: 0;
 }
 
 .hero-wrapper > .hero p {
-  font-size: 14px; /* Match original supporting text size */
-  color: #003E61; /* Dark teal for supporting text */
+  font-size: 1rem; /* Adjust supporting text size */
+  color: #003E54; /* Dark teal for text */
   margin: 0 0 10px; /* Add spacing below text */
 }
 
-@media (width <= 768px) {
-  .hero-wrapper {
-    flex-direction: column; /* Stack text and image vertically */
-    padding: 20px; /* Add padding for smaller screens */
-  }
-
-  .hero-wrapper > .hero > div {
-    flex-direction: column; /* Stack second-level elements vertically */
-    gap: 20px; /* Adjust spacing for smaller screens */
-  }
-
-  .hero-wrapper > .hero > div > div {
-    max-width: 100%; /* Allow full width for both text and image */
-    padding: 0; /* Remove unnecessary padding */
-  }
-
-  .hero-wrapper > .hero > div > div:first-child img {
-    width: 100%; /* Ensure image scales properly */
-    height: auto; /* Maintain aspect ratio */
-  }
+.hero-wrapper > .hero p:last-child {
+  font-size: 0.875rem; /* Adjust caption text size */
+  color: #D4D4D4; /* Light gray */
+  position: absolute; /* Position caption */
+  bottom: 20px; /* Align caption with bottom of the image column */
+  right: 40px; /* Align caption with the right edge of the image */
 }
