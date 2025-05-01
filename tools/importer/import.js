@@ -24,7 +24,7 @@ import columns15Parser from './parsers/columns15.js';
 import accordion12Parser from './parsers/accordion12.js';
 import hero2Parser from './parsers/hero2.js';
 import cards16Parser from './parsers/cards16.js';
-import hero14Parser from './parsers/hero14.js';
+import hero14Parser from './parsers/hero41.js';
 import columns13Parser from './parsers/columns13.js';
 import columns19Parser from './parsers/columns19.js';
 import headerParser from './parsers/header.js';
