@@ -240,6 +240,7 @@ export default {
   transform: async (source) => {
     const { document, params: { originalURL } } = source;
 
+
     // sanitize the original URL
     /* eslint-disable no-param-reassign */
     source.params.originalURL = new URL(originalURL).href;
@@ -265,6 +266,8 @@ export default {
     }
 
     let main = document.body;
+
+    WebImporter.DOMUtils.remove(main, ['.popup']);
 
     // before transform hook
     WebImporter.Import.transform(TransformHook.beforeTransform, main, { ...source, publishUrl });
