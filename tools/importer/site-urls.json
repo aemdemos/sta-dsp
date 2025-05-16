@@ -1,0 +1,35 @@
+{
+  "originUrl": "https://www.biomarkerboost.com",
+  "lastCrawled": "https://www.biomarkerboost.com",
+  "urls": [
+    {
+      "url": "https://www.biomarkerboost.com/",
+      "source": "CRAWL",
+      "targetPath": "/index",
+      "id": "fa55a3b638ad952ace046b64330e03ef52a77133"
+    },
+    {
+      "url": "https://www.biomarkerboost.com/what-are-biomarkers",
+      "source": "CRAWL",
+      "targetPath": "/what-are-biomarkers",
+      "id": "0711e36cd8f7ccc716044a0840d3e250a328be34"
+    },
+    {
+      "url": "https://www.biomarkerboost.com/why-biomarkers-matter",
+      "source": "CRAWL",
+      "targetPath": "/why-biomarkers-matter",
+      "id": "075813bdc9c2bc5985e761aa8835e2f0dc9aa32d"
+    }
+  ],
+  "crawlOptions": {
+    "timeout": 64800000,
+    "inclusionPatterns": [],
+    "exclusionPatterns": [],
+    "limit": -1,
+    "sameDomain": true,
+    "keepHash": false,
+    "strategy": "crawl",
+    "logger": {}
+  },
+  "extractionErrors": []
+}
