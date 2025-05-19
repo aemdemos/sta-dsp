@@ -1,0 +1,167 @@
+{
+  "fragments": [
+    {
+      "name": "nav",
+      "path": "/nav",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-00-0ea0ae5ba1245dfb496167ef99f1633fc53b06ae",
+          "xpath": "/html[1]/body[1]/nav[1]"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "path": "/footer",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-13-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Columns",
+      "cluster": 1,
+      "source": "Columns",
+      "target": "Columns (columns1)",
+      "key": "columns1",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-02-b2c8ec8cc7206114599cd049698cc67e0e048d63",
+          "xpath": "/html[1]/body[1]/header[1]"
+        },
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-13-a507e040135207256fc0c4fd07f12510b5a9e729",
+          "xpath": "/html[1]/body[1]/footer[1]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 2,
+      "source": "Columns",
+      "target": "Columns (columns2)",
+      "key": "columns2",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-10-796e849cb17320ad9140c2a1b41bb8d247c7d309",
+          "xpath": "/html[1]/body[1]/section[4]"
+        }
+      ]
+    },
+    {
+      "name": "Columns",
+      "cluster": 3,
+      "source": "Columns",
+      "target": "Columns (columns3)",
+      "key": "columns3",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-06-6b77e8ccfe0df6b4e249826ad024b9a9eac87a80",
+          "xpath": "/html[1]/body[1]/section[2]/div[1]/div[3]"
+        },
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-08-eadf6a6abca85dfbd8029464354f763b41bb12a6",
+          "xpath": "/html[1]/body[1]/section[3]/div[1]/div[2]"
+        }
+      ]
+    },
+    {
+      "name": "unknown",
+      "cluster": 4,
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-00-0ea0ae5ba1245dfb496167ef99f1633fc53b06ae",
+          "xpath": "/html[1]/body[1]/nav[1]"
+        }
+      ]
+    },
+    {
+      "name": "Search",
+      "cluster": 5,
+      "source": "Search",
+      "target": "Search (search5)",
+      "key": "search5",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-01-8aa164f8a69d9059ae78718716eb117f03bccd1e",
+          "xpath": "/html[1]/body[1]/nav[2]"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "cluster": 6,
+      "source": "Hero",
+      "target": "Hero (hero6)",
+      "key": "hero6",
+      "instances": [
+        {
+          "url": "https://www.ilmgmt.com/index.html",
+          "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+          "uuid": "b18c804b-12-2ab4cc062580054d821e99c69b3a82a1932e4b7f",
+          "xpath": "/html[1]/body[1]/section[6]"
+        }
+      ]
+    }
+  ],
+  "outliers": [
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-03-c498d593a5bc97467d867eb87705c763456c87bd",
+      "xpath": "/html[1]/body[1]/section[1]"
+    },
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-04-f3bed983a6611794488e2f927319697f2e0241b2",
+      "xpath": "/html[1]/body[1]/section[2]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-05-261c42ba0b32bcb3fb5c83c560b10c2435ad553d",
+      "xpath": "/html[1]/body[1]/section[2]/div[1]/div[2]"
+    },
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-07-7c4b411c256121bb1e0e58c581250626ad209dca",
+      "xpath": "/html[1]/body[1]/section[3]/div[1]/div[1]"
+    },
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-09-239c7c10c4d5083291e1b348e4d2352475a261b1",
+      "xpath": "/html[1]/body[1]/section[3]/div[1]/div[3]"
+    },
+    {
+      "url": "https://www.ilmgmt.com/index.html",
+      "urlHash": "b18c804b1b434d258e02c1ae0eed4f151aec3375",
+      "uuid": "b18c804b-11-2543d43dac63c32e3ccae4aae2045cbf1572ea04",
+      "xpath": "/html[1]/body[1]/section[5]"
+    }
+  ]
+}
