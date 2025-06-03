@@ -18,7 +18,7 @@
 }
 
 @font-face {
-  font-family: open_sans;      
+  font-family: "open_sans";      
   src: url('../fonts/open-sans-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
@@ -27,7 +27,7 @@
 }
 
 @font-face {
-  font-family: Optum-Micro-interaction-16;      
+  font-family: "Optum-Micro-interaction-16";      
   src: url('../fonts/optum-micro-interaction-16-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
@@ -36,7 +36,7 @@
 }
 
 @font-face {
-  font-family: open_sans;      
+  font-family: "open_sans";      
   src: url('../fonts/open-sans-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
