@@ -17,120 +17,109 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
-  --body-font-family: "Roboto Slab", "Roboto Slab Fallback", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font-family: "Montserrat", "Montserrat Fallback", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --body-font-size-m: 24px;
-  --body-font-size-s: 12px;
-  --body-font-size-xs: 16px;
-  --heading-font-size-xxl: 40px;
-  --heading-font-size-xl: 40px;
-  --heading-font-size-l: 16px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 12px;
-  --heading-font-size-xs: 16px;
+  --body-font-family: "Enterprise Sans", "Enterprise Sans Fallback", "Helvetica", "Arial", "sans-serif";
+  --heading-font-family: "Enterprise Sans Bold", "Enterprise Sans Bold Fallback", "Helvetica", "Arial", "sans-serif";
+  --body-font-size-m: 23px;
+  --body-font-size-s: 20px;
+  --body-font-size-xs: 18px;
+  --heading-font-size-xxl: 46px;
+  --heading-font-size-xl: 29px;
+  --heading-font-size-l: 12px;
+  --heading-font-size-m: 23px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 18px;
   --nav-height: 64px;
 }
 
 /* fallback fonts */
 @font-face {
-  font-family:"Roboto Slab Fallback";
+  font-family:"Material Symbols Outlined Fallback";
   font-style:normal;
-  font-weight:400;
+  font-weight:normal;
   src:local("Arial");
-  ascent-override:97.37%;
-  descent-override:25.18%;
+  ascent-override:50.19%;
+  descent-override:4.56%;
   line-gap-override:0.00%;
-  size-adjust:107.61%;
+  size-adjust:219.15%;
 }
 
 @font-face {
-  font-family:"Roboto Slab Fallback";
+  font-family:"Material Symbols Rounded Fallback";
   font-style:normal;
-  font-weight:300;
+  font-weight:normal;
   src:local("Arial");
-  ascent-override:97.37%;
-  descent-override:25.18%;
+  ascent-override:50.19%;
+  descent-override:4.56%;
   line-gap-override:0.00%;
-  size-adjust:107.61%;
+  size-adjust:219.15%;
 }
 
 @font-face {
-  font-family:"Roboto Slab Fallback";
+  font-family:"open_sans Fallback";
   font-style:normal;
   font-weight:700;
   src:local("Arial Bold");
-  ascent-override:105.35%;
-  descent-override:27.25%;
+  ascent-override:98.10%;
+  descent-override:25.82%;
   line-gap-override:0.00%;
-  size-adjust:99.46%;
+  size-adjust:96.84%;
 }
 
 @font-face {
-  font-family:"Roboto Slab Fallback";
-  font-style:normal;
-  font-weight:100;
-  src:local("Arial");
-  ascent-override:97.37%;
-  descent-override:25.18%;
-  line-gap-override:0.00%;
-  size-adjust:107.61%;
-}
-
-@font-face {
-  font-family:"Droid Serif Fallback";
-  font-style:italic;
-  font-weight:400;
-  src:local("Arial Italic");
-  ascent-override:88.42%;
-  descent-override:22.81%;
-  line-gap-override:0.00%;
-  size-adjust:105.31%;
-}
-
-@font-face {
-  font-family:"Montserrat Fallback";
+  font-family:"Optum-Micro-interaction-16 Fallback";
   font-style:normal;
   font-weight:400;
   src:local("Arial");
-  ascent-override:87.85%;
-  descent-override:22.78%;
+  ascent-override:90.67%;
+  descent-override:23.86%;
   line-gap-override:0.00%;
-  size-adjust:110.19%;
+  size-adjust:104.77%;
 }
 
 @font-face {
-  font-family:"Montserrat Fallback";
+  font-family:"open_sans Fallback";
   font-style:normal;
-  font-weight:700;
-  src:local("Arial Bold");
-  ascent-override:95.04%;
-  descent-override:24.64%;
+  font-weight:400;
+  src:local("Arial");
+  ascent-override:90.67%;
+  descent-override:23.86%;
   line-gap-override:0.00%;
-  size-adjust:101.85%;
+  size-adjust:104.77%;
 }
 
 @font-face {
-  font-family:"Font Awesome 5 Free Fallback";
+  font-family:"Enterprise Sans Bold Fallback";
   font-style:normal;
-  font-weight:900;
-  src:local("Arial Bold");
-  ascent-override:87.50%;
-  descent-override:12.50%;
+  font-weight:500 700;
+  src:local("Arial");
+  ascent-override:90.67%;
+  descent-override:23.86%;
   line-gap-override:0.00%;
-  size-adjust:100.00%;
+  size-adjust:104.77%;
+}
+
+@font-face {
+  font-family:"Enterprise Sans Fallback";
+  font-style:normal;
+  font-weight:100 400;
+  src:local("Arial");
+  ascent-override:90.67%;
+  descent-override:23.86%;
+  line-gap-override:0.00%;
+  size-adjust:104.77%;
 }
 
 @media (width>=900px) {
   :root {
-    --body-font-size-m: 24px;
-    --body-font-size-s: 12px;
-    --body-font-size-xs: 16px;
-    --heading-font-size-xxl: 40px;
-    --heading-font-size-xl: 40px;
-    --heading-font-size-l: 16px;
-    --heading-font-size-m: 24px;
-    --heading-font-size-s: 12px;
-    --heading-font-size-xs: 16px;
+    --body-font-size-m: 23px;
+    --body-font-size-s: 20px;
+    --body-font-size-xs: 18px;
+    --heading-font-size-xxl: 46px;
+    --heading-font-size-xl: 29px;
+    --heading-font-size-l: 12px;
+    --heading-font-size-m: 23px;
+    --heading-font-size-s: 20px;
+    --heading-font-size-xs: 18px;
   }
 }
 
