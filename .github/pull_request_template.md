@@ -4,4 +4,4 @@ Fix #<gh-issue-id>
 
 Test URLs:
 - Before: https://main--sta-dsp--aemdemos.aem.live/
-- After: https://main--sta-dsp--aemdemos.aem.live/
+- After: https://<branch>--sta-dsp--aemdemos.aem.live/
