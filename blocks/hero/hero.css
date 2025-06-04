@@ -1,4 +1,5 @@
 
+
 .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -64,4 +65,254 @@
   position: absolute; /* Position caption */
   bottom: 20px; /* Align caption with bottom of the image column */
   right: 40px; /* Align caption with the right edge of the image */
+}
+
+
+.hero.hero71 {
+  background: #faf9f6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 568px;
+  width: 100%;
+  padding: 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero.hero71 > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left column: Text and buttons */
+.hero.hero71 > div > div {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0 40px 0;
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.hero.hero71 h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #032d69;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  margin-top: 0;
+  font-family: var(--heading-font-family);
+}
+
+.hero.hero71 > div > div > p:not(.button-container) {
+  font-size: 1.25rem;
+  color: #032d69;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+
+.hero.hero71 .button-container {
+  display: inline-block;
+  margin-right: 18px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.hero.hero71 .button-container:last-child {
+  margin-right: 0;
+}
+
+.hero.hero71 .button-container .button {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1663c7;
+  padding: 18px 32px;
+  min-width: 220px;
+  height: 60px;
+  margin: 0;
+  transition: box-shadow 0.2s;
+  border: none;
+  white-space: nowrap;
+  text-align: left;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.hero.hero71 .button-container .button:hover,
+.hero.hero71 .button-container .button:focus {
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,0.12);
+  color: #1663c7;
+  background: #f3f9fe;
+  text-decoration: underline;
+}
+
+.hero.hero71 .button-container .button:visited {
+  color: #1663c7;
+}
+
+/* Row layout for button containers */
+.hero.hero71 .button-container {
+  vertical-align: top;
+}
+
+.hero.hero71 > div > div > .button-container {
+  margin-top: 28px;
+}
+
+.hero.hero71 > div > div > .button-container:first-of-type {
+  margin-left: 0;
+}
+
+/* Stack buttons horizontally */
+.hero.hero71 > div > div > .button-container {
+  display: inline-block;
+}
+
+.hero.hero71 > div > div > .button-container:not(:last-child) {
+  margin-right: 18px;
+}
+
+
+/* Right column: Image with large orange bullseye */
+.hero.hero71 > div > div > p:first-child {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  margin: 0;
+  width: 700px;
+  height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero.hero71 > div > div > p:first-child picture,
+.hero.hero71 > div > div > p:first-child img {
+  display: block;
+  width: 460px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  object-fit: cover;
+  pointer-events: auto;
+}
+
+.hero.hero71:before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: #ff7300;
+  z-index: 0;
+}
+
+/* Inner white circle for bullseye effect */
+.hero.hero71:after {
+  position: absolute;
+  content: "";
+  right: 120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: #fff;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .hero.hero71 > div > div > p:first-child {
+    width: 480px;
+    height: 480px;
+    right: -40px;
+  }
+  .hero.hero71:before {
+    width: 480px;
+    height: 480px;
+    right: 0;
+  }
+  .hero.hero71:after {
+    width: 240px;
+    height: 240px;
+    right: 60px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero.hero71 {
+    flex-direction: column;
+    min-height: unset;
+    padding: 20px;
+  }
+  .hero.hero71 > div {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 100%;
+  }
+  .hero.hero71 > div > div {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+  }
+  .hero.hero71 > div > div > p:first-child {
+    position: relative;
+    right: unset;
+    top: unset;
+    transform: none;
+    width: 100vw;
+    height: auto;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+  }
+  .hero.hero71:before,
+  .hero.hero71:after {
+    display: none;
+  }
+  .hero.hero71 h1 {
+    font-size: 2rem;
+  }
+  .hero.hero71 .button-container .button {
+    min-width: 150px;
+    font-size: 1rem;
+    padding: 14px 16px;
+    height: 48px;
+  }
+}
+
+/* Merged selector for .hero.hero71 */
+.hero.hero71 {
+  background: #faf9f6;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-height: 568px;
+  width: 100%;
+  padding: 0 40px;
+  position: relative;
+  overflow: hidden;
 }
